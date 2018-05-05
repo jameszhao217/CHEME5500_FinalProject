@@ -37,10 +37,10 @@ er = True
 while er:
     print('********Loading Conditions********')
     er = False
-    Load_type = input("What type of loading conditions [1] Point (kips),[2] Distributed(lbs/ft): ")
+    Load_type = input("What type of loading conditions [1] Point (kips),[2] Distributed(kips/ft): ")
     if Load_type==1:
         Location=input("Where is the location (m) of your point source x=: ")
-        P_mag = input('what is the magnitude of the point load (lbs): ')
+        P_mag = input('what is the magnitude of the point load (kips): ')
         if Location>L:
             print('ERROR: point load out of domain of beam')
             er = True 
