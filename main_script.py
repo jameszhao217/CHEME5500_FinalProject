@@ -9,8 +9,7 @@ import numpy as np
 from deflection import deflect_output
 import operator
 
-import pygame
-import time
+from pygame_script import pygame_plot
 
 supports = np.arange(1, 5, dtype=int) #range of possible support conditions
 er=True
@@ -94,92 +93,6 @@ print ('DEFLECTION AT x = %f (ft) IS %f (in)' % (x_val,Y[x_index]))
 print('thanks for playing!!!!!!!')
 
 
-
-############################################################################
-####################### MZ Added: Pygame Starts ############################
-############################################################################
-
-# PyGame Tutorial Reference: 
-
-pygame.init()
-
-# Size of Display
-display_width = 800
-display_height = 600
-
-# Color rgb
-black = (0,0,0)
-white = (255,255,255)
-red = (255,0,0)
-
-# Set display
-gameDisplay = pygame.display.set_mode((display_width,display_height))
-
-# Name program
-pygame.display.set_caption('Deflection run')
-
-clock = pygame.time.Clock()
-
-# load Deflection Curve
-defl_shape = pygame.image.load('deflection.png')
-
-def defl_location(x,y):
-    gameDisplay.blit(defl_shape,(x,y))
-
-def text_objects(text,font):
-    textSurface = font.render(text, True, black)
-    return textSurface, textSurface.get_rect()
-    
-#def message_display(text):
-#    largeText = pygame.font.Font('freesansbold.ttf',115)
-#    TextSurf, TextRect = text_objects(text, largeText)    
-#    TextRect.center = ((display_width/2),(display_height/2))
-#    gameDisplay.blit(TextSurf, TextRect)
-#    pygame.display.update
-#    time.sleep(2)
-#    game_loop()
-    
-def game_intro():
-    
-    intro = True
-    while intro:
-    
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-    
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',55)
-        TextSurf, TextRect = text_objects('Beam Deflection Curve Fun', largeText)    
-        TextRect.center = ((display_width/2),(display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
-        pygame.display.update()
-        clock.tick(15)
-    
-def game_loop():
-        
-    x = (display_width * 0.25)
-    y = (display_height * 0.5)
-      
-    game_exit = False
-    
-    while not game_exit:
-        
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                game_exit = True
-        
-        gameDisplay.fill(white)
-        defl_location(x,y)
-        pygame.display.update()
-        clock.tick(60)
-    
-game_intro()
-game_loop()    
-pygame.quit()
-
-
-############################################################################
-####################### MZ Added: Pygame Ends ############################
-############################################################################
+# MZ Added: Pygame Plot GUI
+pygame_plot()
 
