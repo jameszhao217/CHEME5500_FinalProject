@@ -93,4 +93,4 @@ print ('DEFLECTION AT x = %f (ft) IS %f (in)' % (x_val,Y[x_index]))
 print('thanks for playing!!!!!!!')
 
 # M.Z. Added: Pygame Plot GUI
-pygame_plot()
+pygame_plot(y_max,X[index],Y[x_index],x_val)

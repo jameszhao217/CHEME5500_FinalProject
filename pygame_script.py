@@ -8,7 +8,7 @@ import sys
 # PyGame Tutorial Reference: 
 # https://pythonprogramming.net/pygame-buttons-part-1-button-rectangle/
 
-def pygame_plot():
+def pygame_plot(max_defleciton,max_location,defl_point,location_point):
     
     # Initialize PyGame
     pygame.init()
@@ -84,13 +84,15 @@ def pygame_plot():
                 pygame.quit()
                 sys.exit()
 
+            # Set up start up page
             gameDisplay.fill(white)
             gameDisplay.blit(bkgroud,(0,0))
             largeText = pygame.font.Font('freesansbold.ttf',50)
             TextSurf, TextRect = text_objects('Beam Deflection Curve Fun', largeText)    
             TextRect.center = ((display_width/2),(display_height/3))
             gameDisplay.blit(TextSurf, TextRect)
-
+            
+            # set buttons
             button('Reveal the Deflected Shape?',(display_width/3),3*display_height/5,300,50,bright_blue,blue,'Play')            
             button('Nevermind ...',(display_width/3),3*display_height/5+75,300,50,bright_red,red,'Quit')
             
@@ -98,9 +100,10 @@ def pygame_plot():
 
     # Display Deflection Curve to Window   
     def game_loop():
-            
+        
+        # Location of Deflection curve
         x = (display_width * 0.25)
-        y = (display_height * 0.2)
+        y = (display_height * 0.30)
           
         game_exit = False
         
@@ -113,9 +116,23 @@ def pygame_plot():
                 sys.exit()
             
             gameDisplay.fill(white)
+            
+            # Display Command Window Outputs
+            mediumText = pygame.font.Font('freesansbold.ttf',20)
+            TextSurf, TextRect = text_objects('Max Deflection = %6.2f (in) at x = %6.2f (ft)' % (max_defleciton,max_location), mediumText)    
+            TextRect.center = ((display_width/2),(display_height/8))
+            gameDisplay.blit(TextSurf, TextRect)
+            TextSurf2, TextRect2 = text_objects('Deflection = %6.2f (in) at x = %6.2f (ft)' % (defl_point,location_point), mediumText)    
+            TextRect2.center = ((display_width/2),(display_height/8)+30)
+            gameDisplay.blit(TextSurf2, TextRect2)
+
+            # Show deflection curve
             defl_location(x,y)
+            
+            # Set up Quit button
+            button('Thank you!',(9*display_width/10),7*display_height/8,150,40,bright_red,red,'Quit')
             pygame.display.update()
-    
+            
     # Run game
     game_intro()
 
