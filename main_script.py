@@ -74,7 +74,7 @@ plt.ylabel('DEFLECTION (in)')
 ax = plt.gca()
 ax.invert_yaxis()
 plt.savefig('deflection.png')
-plt.show()
+# plt.show()
 index, y_max = max(enumerate(Y), key=operator.itemgetter(1)) #find max deflection and index
 print 'MAX DEFLECTION = %f (in) at x = %f (ft)' % (y_max,X[index])
 print'********************Delflection at a specified point**********************'

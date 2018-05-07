@@ -12,15 +12,15 @@ def pygame_plot():
     
     # Size of Display
     display_width = 800
-    display_height = 600
+    display_height = 450 #600
     
     # Color rgb
     black = (0,0,0)
     white = (255,255,255)
-    red = (200,0,0)
-    green = (0,200,0)    
-    bright_red = (255,0,0)
-    bright_green = (0,255,0)
+    red = (255,0,0)
+    blue = (65,105,225)
+    bright_red = (255,99,71)
+    bright_blue = (30,144,255)
     
     # Set display
     gameDisplay = pygame.display.set_mode((display_width,display_height))
@@ -31,6 +31,10 @@ def pygame_plot():
     
     # load Deflection Curve
     defl_shape = pygame.image.load('deflection.png')
+    
+    # Load Background
+    bkgroud = pygame.image.load('background.png')
+
     
     # Define the location where the curve is plotted
     def defl_location(x,y):
@@ -77,13 +81,14 @@ def pygame_plot():
                 sys.exit()
 
             gameDisplay.fill(white)
-            largeText = pygame.font.Font('freesansbold.ttf',40)
+            gameDisplay.blit(bkgroud,(0,0))
+            largeText = pygame.font.Font('freesansbold.ttf',50)
             TextSurf, TextRect = text_objects('Beam Deflection Curve Fun', largeText)    
             TextRect.center = ((display_width/2),(display_height/3))
             gameDisplay.blit(TextSurf, TextRect)
 
-            button('YES PLEASE',(display_width/2),3*display_height/5,200,50,bright_green,green,'Play')            
-            button('Nevermind',(display_width/2),3*display_height/5+100,200,50,bright_red,red,'Quit')
+            button('Reveal the Deflected Shape?',(display_width/3),3*display_height/5,300,50,bright_blue,blue,'Play')            
+            button('Nevermind ...',(display_width/3),3*display_height/5+75,300,50,bright_red,red,'Quit')
             
             pygame.display.update()
 
@@ -91,7 +96,7 @@ def pygame_plot():
     def game_loop():
             
         x = (display_width * 0.25)
-        y = (display_height * 0.3)
+        y = (display_height * 0.2)
           
         game_exit = False
         
