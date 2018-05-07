@@ -1,2 +1,22 @@
 # CHEME5500_FinalProject
-Group project for CHEME 5500
+Moran, Terrence
+Zhao, Mingjie
+2018/05/07
+
+### Program Introduction
+
+
+
+
+
+### Functions
+-
+
+-
+
+- pygame_script:
+This script sets up PyGame and generates a GUI to display the outputs from the command window
+
+
+### How-to
+
