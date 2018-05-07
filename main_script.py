@@ -92,7 +92,5 @@ x_approx,x_index = find_nearest(X,x_val)
 print ('DEFLECTION AT x = %f (ft) IS %f (in)' % (x_val,Y[x_index]))
 print('thanks for playing!!!!!!!')
 
-
-# MZ Added: Pygame Plot GUI
+# M.Z. Added: Pygame Plot GUI
 pygame_plot()
-

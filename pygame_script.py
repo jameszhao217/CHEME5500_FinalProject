@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+############## M.Z. added pygame plot ##############
+
 import pygame
 import sys
 
@@ -8,13 +10,14 @@ import sys
 
 def pygame_plot():
     
+    # Initialize PyGame
     pygame.init()
     
     # Size of Display
     display_width = 800
-    display_height = 450 #600
+    display_height = 450
     
-    # Color rgb
+    # Set Color (rgb)
     black = (0,0,0)
     white = (255,255,255)
     red = (255,0,0)
@@ -24,7 +27,6 @@ def pygame_plot():
     
     # Set display
     gameDisplay = pygame.display.set_mode((display_width,display_height))
-#    clock = pygame.time.Clock()
     
     # Name program
     pygame.display.set_caption('Beam Deflection')
@@ -34,7 +36,6 @@ def pygame_plot():
     
     # Load Background
     bkgroud = pygame.image.load('background.png')
-
     
     # Define the location where the curve is plotted
     def defl_location(x,y):
@@ -48,9 +49,11 @@ def pygame_plot():
     # Define GUI button function
     def button(msg,x,y,w,h,low_color,high_color,action = None):
             
+        # Obtain mouse positions and actions
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
 
+        # Define Buttons and Events
         if x+w/2 > mouse[0] > x-w/2 and y + h > mouse[1] > y:
             pygame.draw.rect(gameDisplay, low_color, (x-w/2,y,w,h))
             if click[0] == 1 and action != None:
@@ -62,12 +65,13 @@ def pygame_plot():
         else:
             pygame.draw.rect(gameDisplay, high_color, (x-w/2,y,w,h))
         
+        # Display words on buttons
         smallText = pygame.font.Font('freesansbold.ttf',20)
         textSurf, textRect = text_objects(msg, smallText)
         textRect.center = ( x, y + h/2)
         gameDisplay.blit(textSurf, textRect)
-        
-    # Game Start Menu    
+
+    ####### Game Start Menu #######    
     def game_intro():
         
         intro = True
