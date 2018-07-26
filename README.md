@@ -28,7 +28,7 @@ an error message will be printed and the questions will be reasked.
 3. Loading Conditions throughout the beam. Options:        
   [1] point load (kips): will prompt user to input location of point load and magnitude of load     
   [2] distributed load (kips/ft): will ask what type of distributed load     
-	  a. constant asks for magnitude of constant load      
+	a. constant asks for magnitude of constant load      
     b. triangular distributed asks for magnitude of load at x=Length (assumes load is zero at x=zero)    
   If the loading conditions are incorrect (example: point load location outside of beam domain), the program will output an error and reask the question.
  
